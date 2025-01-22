@@ -46,17 +46,19 @@ tests will cover book module, unit tests for service added and integration tests
 
 ### Authentication
 - `POST /user/registe`: to register a new user
-payload > {
+```bash {
 name: 'test',
 email: 'test@test.com',
 password: 'test@123'
 }
+```
 - 
 - `POST /auth/login`: Login and get an access token.
-payload > {
+```bash {
 email: 'test@test.com',
 password: 'test@123'
 }
+```
 - 
 - `GET /auth/me`: Get the authenticated user's details.
 
@@ -71,13 +73,14 @@ password: 'test@123'
 ### Books
 Note: access_token received from login api response need to be sent in authorization headers, Bearer <token>
 - `POST /book/add`: Add a new book.
-{
+```bash {
     "title": "tested book",
     "author": "peter",
     "genre": "br",
     "published_at":  "2025-01-20T17:10:57.779Z",
     "thumbnail": "http://test.com/test.png"
 }
+```
 - 
 - `GET /book/list`: Get a list of books.
 example : localhost:3000/book/list?page=2&limit=1&sortBy=genre
