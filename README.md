@@ -5,9 +5,10 @@ moduler codebase for users and books,
 Unit tests and integration tests are added for bookmodule only
 ## Prerequisites
 
-- Node.js
+- Node.js v18 or above
 - MySQL
 
+  for mysql configuration you can use xampp panel, https://www.apachefriends.org/download.html
 ## Getting Started
 
 ### Installation
@@ -15,7 +16,7 @@ Unit tests and integration tests are added for bookmodule only
 1. Clone the repository:
     ```bash
     git clone https://github.com/vikbi/book-management-service.git
-    cd book-management-service
+    cd book-management-service/book
     ```
 
 2. Install dependencies:
@@ -23,7 +24,7 @@ Unit tests and integration tests are added for bookmodule only
     npm install
     ```
 
-3. Set up the MySQL database and update the environment variables in the `.env` file with your database configuration.
+3. Set up the MySQL database and update the environment variables in the `.env` file with your database configuration, example env file given.
 
 ### Running the Application
 
@@ -32,7 +33,7 @@ Unit tests and integration tests are added for bookmodule only
     npm run start
     ```
 
-2. The application will be available at `http://localhost:3000`.
+2. The application will be available at `http://localhost:3000`. you can change application port in env file if you wish to
 
 ### Running Tests
 
@@ -40,12 +41,23 @@ Unit tests and integration tests are added for bookmodule only
     ```bash
     npm run test
     ```
-
+tests will cover book module, unit tests for service added and integration tests for book module only
 ## API Endpoints
 
 ### Authentication
 - `POST /user/registe`: to register a new user
+payload > {
+name: 'test',
+email: 'test@test.com',
+password: 'test@123'
+}
+- 
 - `POST /auth/login`: Login and get an access token.
+payload > {
+email: 'test@test.com',
+password: 'test@123'
+}
+- 
 - `GET /auth/me`: Get the authenticated user's details.
 
 ### Users
@@ -59,7 +71,18 @@ Unit tests and integration tests are added for bookmodule only
 ### Books
 Note: access_token received from login api response need to be sent in authorization headers, Bearer <token>
 - `POST /book/add`: Add a new book.
+{
+    "title": "tested book",
+    "author": "peter",
+    "genre": "br",
+    "published_at":  "2025-01-20T17:10:57.779Z",
+    "thumbnail": "http://test.com/test.png"
+}
+- 
 - `GET /book/list`: Get a list of books.
+example : localhost:3000/book/list?page=2&limit=1&sortBy=genre
+
+- 
 - `GET /book/:id`: Get a book by ID.
 - `PATCH /book/:id`: Update a book by ID.
 - `DELETE /book/:id`: Delete a book by ID.
@@ -68,9 +91,8 @@ Note: access_token received from login api response need to be sent in authoriza
 
 The following environment variables are used in the application:
 
-- `NODE_ENV`: The environment in which the application is running (e.g., development, production).
-- `DATABASE_HOST`: The hostname of the database.
-- `DATABASE_PORT`: The port number of the database.
-- `DATABASE_USER`: The username for the database.
-- `DATABASE_PASSWORD`: The password for the database.
-- `DATABASE_NAME`: The name of the database.
+- `DB_HOST`: The hostname of the database.
+- `DB_PORT`: The port number of the database.
+- `DB_USERNAME`: The username for the database.
+- `DB_PASSWORD`: The password for the database.
+- `DB_NAME`: The name of the database.
