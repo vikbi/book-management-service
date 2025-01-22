@@ -74,9 +74,7 @@ password: 'test@123'
 
 ### Books
 Note: access_token received from login api response need to be sent in authorization headers, Bearer <token>
-```bash
 
-```
 - `POST /book/add`: Add a new book.
 ```bash
 {
@@ -90,9 +88,9 @@ Note: access_token received from login api response need to be sent in authoriza
 - 
 - `GET /book/list`: Get a list of books.
   ```bash
-example : localhost:3000/book/list?page=2&limit=1&sortBy=genre
-headers {
-Authorization: Bearer <TOKEN>
+GET : localhost:3000/book/list?page=2&limit=1&sortBy=genre
+headers: {
+Authorization: Bearer <token>
 }
 response : 
 {
