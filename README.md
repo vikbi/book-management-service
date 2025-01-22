@@ -85,32 +85,12 @@ Note: access_token received from login api response need to be sent in authoriza
     "thumbnail": "http://test.com/test.png"
 }
 ```
-- 
 - `GET /book/list`: Get a list of books.
   ```bash
-GET : localhost:3000/book/list?page=2&limit=1&sortBy=genre
-headers: {
-Authorization: Bearer <token>
-}
-response : 
-{
-    "data": [
-        {
-            "id": 1,
-            "user_id": 5,
-            "title": "Halloween 2024 in london3",
-            "author": "test",
-            "thumbnail": "http://test.com/test.png",
-            "genre": "fr",
-            "published_at": "2019-01-01T00:00:00.000Z",
-            "created_at": "2025-01-20T02:12:26.000Z",
-            "updated_at": "2025-01-20T02:12:26.000Z"
-        }
-    ],
-    "total": 1,
-    "page": 1,
-    "limit": "1"
-}
+    GET : localhost:3000/book/list?page=2&limit=1&sortBy=genre
+    headers: {
+    Authorization: Bearer <token>
+    }
 ```
 - 
 - `GET /book/:id`: Get a book by ID.
